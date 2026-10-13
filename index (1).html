@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quickwise – Still confused? Let's try another way.</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <a class="logo" href="#home" aria-label="Quickwise home">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z" fill="#f6d77a"/><path d="M9.5 20.5h5M10.5 22h3" stroke="#5b4bd6" stroke-width="1.8" stroke-linecap="round"/><path d="M12 6v4M10 8h4" stroke="#5b4bd6" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span>Quickwise</span>
+  </a>
+  <button id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Toggle menu">☰</button>
+  <nav id="menu"><a href="#home">Home</a><a href="#how">How It Works</a><a href="#recent">Recent Questions</a></nav>
+</header>
+
+<main id="main">
+<section id="home" class="hero">
+  <h1>Still confused? Let's try another way.</h1>
+  <p class="lead">Tell Quickwise what isn't making sense. We'll break it down, look at it differently, and help you figure it out.</p>
+
+  <form id="askForm" class="card ask" novalidate>
+    <label for="q" class="lbl">Your question</label>
+    <textarea id="q" rows="4" placeholder="Type or paste a confusing question or instructions…"></textarea>
+
+    <div class="photo-tools">
+      <input id="cam" class="sr" type="file" accept="image/jpeg,image/png,image/webp" capture="environment">
+      <label for="cam" class="btn ghost">📸 Take a Photo</label>
+      <input id="upl" class="sr" type="file" accept="image/jpeg,image/png,image/webp">
+      <label for="upl" class="btn ghost">Upload a Photo</label>
+    </div>
+    <p id="photoErr" class="msg err" role="alert" hidden></p>
+    <div id="preview" class="preview" hidden>
+      <img id="previewImg" alt="">
+      <div>
+        <p class="ok">Got your question! Let's figure it out together.</p>
+        <p class="small">Quickwise can't read photos yet, so please type or correct the question from your photo in the box above. Your photo stays on this device.</p>
+        <button type="button" id="replaceBtn" class="btn ghost sm">Replace photo</button>
+        <button type="button" id="removeBtn" class="btn ghost sm">Remove photo</button>
+      </div>
+    </div>
+
+    <label for="cat" class="lbl">Category</label>
+    <select id="cat">
+      <option>School Subject</option><option>Instructions</option><option>Technology</option><option>Everyday Questions</option><option>Something Else</option>
+    </select>
+
+    <p class="lbl" id="confLbl">What part is confusing? <span class="small">(optional)</span></p>
+    <div id="confHome" class="chips" role="group" aria-labelledby="confLbl"></div>
+
+    <p id="formMsg" class="msg err" role="alert" hidden></p>
+    <button type="submit" class="btn primary big">Help Me Understand</button>
+    <p class="small try">New here? <button type="button" id="exampleBtn" class="link">Try an example: "What is a fraction? I don't get what 3/4 means."</button></p>
+  </form>
+</section>
+
+<section id="result" class="wrap" hidden aria-live="polite" tabindex="-1">
+  <div id="loading" class="card loading" hidden><span class="dots"></span> Searching Quickwise's built-in topics…</div>
+  <div id="resultBody" hidden>
+    <p class="eyebrow">Your question</p>
+    <blockquote id="qEcho"></blockquote>
+    <div id="unsupported" class="card" hidden></div>
+    <div id="supported" hidden>
+      <h2 id="topicName"></h2>
+      <p class="small">What's confusing?</p>
+      <div id="confExp" class="chips"></div>
+      <div id="guide" class="guide"></div>
+      <div id="tabs" class="tabs" role="tablist" aria-label="Explanation modes"></div>
+      <div id="panel" class="card panel" role="tabpanel" tabindex="0"></div>
+      <div class="actions">
+        <button id="stillBtn" class="btn accent big">That Still Doesn't Make Sense</button>
+        <button id="startOver" class="btn ghost">Ask another question</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="wrap">
+  <h2>How It Works</h2>
+  <div class="grid3">
+    <div class="card"><span class="num">1</span><h3>Ask</h3><p>Type a question, paste instructions, or add a photo and type what it says.</p></div>
+    <div class="card"><span class="num">2</span><h3>Say what's confusing</h3><p>Pick the part that's tripping you up so the help fits you.</p></div>
+    <div class="card"><span class="num">3</span><h3>Try another way</h3><p>Switch modes, practice, and tap "That Still Doesn't Make Sense" for a fresh angle.</p></div>
+  </div>
+  <p class="small note">This demo has no live AI. It uses built-in explanations for a few sample topics: fractions, photosynthesis, weather vs. climate, computer basics, and confusing instructions.</p>
+</section>
+
+<section id="recent" class="wrap">
+  <div class="row"><h2>Your Recent Questions</h2><button id="clearBtn" class="btn ghost sm">Clear history</button></div>
+  <div id="recentList" class="card"></div>
+</section>
+</main>
+
+<footer>
+  <p>Quickwise is a learning aid. This built-in demo has limited topics and does not use AI or read photos. Your history stays in this browser; photos never leave your device.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
